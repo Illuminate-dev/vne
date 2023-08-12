@@ -3,4 +3,4 @@ CFLAGS=-lsfml-graphics -lsfml-window -lsfml-system
 OBJ = app.cpp
 
 vne: $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS)
+	$(CC) -o $@.out $^ $(CFLAGS)
