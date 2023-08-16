@@ -11,6 +11,8 @@ public:
 
 private:
   sf::RenderWindow window;
+  sf::Texture backgroundTexture;
+  sf::Sprite backgroundSprite;
   std::string title;
   void processEvent(sf::Event event);
   void handleInput(sf::Keyboard::Key key);
