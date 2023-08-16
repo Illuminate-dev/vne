@@ -1,6 +1,9 @@
 CC=clang++
-CFLAGS=-lsfml-graphics -lsfml-window -lsfml-system
-OBJ = app.cpp
+CFLAGS=-lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+OBJ = main.cpp
+SRC_DIR = src
+_INCLUDE = engine.cpp
+INCLUDE = $(patsubst %,$(SRC_DIR)/%,$(_INCLUDE))
 
-vne: $(OBJ)
-	$(CC) -o $@.out $^ $(CFLAGS)
+vne: $(SRC_DIR)/$(OBJ)
+	$(CC) -o $@.out $(INCLUDE) $^ $(CFLAGS)
