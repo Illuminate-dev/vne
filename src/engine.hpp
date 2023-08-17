@@ -1,6 +1,7 @@
 #ifndef ENGINE_HPP
 #define ENGINE_HPP
 
+#include "background.hpp"
 #include <SFML/Graphics.hpp>
 
 class Engine {
@@ -11,8 +12,7 @@ public:
 
 private:
   sf::RenderWindow window;
-  sf::Texture backgroundTexture;
-  sf::Sprite backgroundSprite;
+  Background background;
   std::string title;
   void processEvent(sf::Event event);
   void handleInput(sf::Keyboard::Key key);
