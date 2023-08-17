@@ -2,6 +2,7 @@
 #define ENGINE_HPP
 
 #include "background.hpp"
+#include "character.hpp"
 #include <SFML/Graphics.hpp>
 
 class Engine {
@@ -13,6 +14,7 @@ public:
 private:
   sf::RenderWindow window;
   Background background;
+  std::vector<Character *> characters;
   std::string title;
   void processEvent(sf::Event event);
   void handleInput(sf::Keyboard::Key key);

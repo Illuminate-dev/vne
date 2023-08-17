@@ -1,7 +1,19 @@
 #include "engine.hpp"
 #include <iostream>
 
-Engine::Engine() { title = "Visual Novel Engine"; }
+Engine::Engine() {
+  title = "Visual Novel Engine";
+
+  sf::Image image;
+  if (!image.loadFromFile("res/astolfo.png")) {
+    std::cerr << "Error loading character texture" << std::endl;
+    std::exit(1);
+  }
+
+  characters.push_back(new Character);
+  characters.back()->setName("Astolfo");
+  characters.back()->setTexture(image);
+}
 
 void Engine::setTitle(std::string title) { this->title = title; }
 
@@ -44,5 +56,7 @@ void Engine::update() {}
 void Engine::render() {
   window.clear();
   background.render(window);
+  for (auto &character : characters)
+    character->render(window);
   window.display();
 }

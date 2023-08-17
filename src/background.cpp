@@ -3,7 +3,7 @@
 #include <iostream>
 
 Background::Background() {
-  if (!backgroundTexture.loadFromFile("res/lycoris_recoil.png")) {
+  if (!backgroundTexture.loadFromFile("res/background.jpg")) {
     std::cerr << "Error loading background texture" << std::endl;
     std::exit(1);
   };
@@ -16,4 +16,9 @@ void Background::render(sf::RenderWindow &window) {
       target.x / 2 - backgroundSprite.getLocalBounds().width / 2,
       target.y / 2 - backgroundSprite.getLocalBounds().height / 2);
   window.draw(backgroundSprite);
+}
+
+void Background::setTexture(sf::Image image) {
+  backgroundTexture.loadFromImage(image);
+  backgroundSprite.setTexture(backgroundTexture);
 }
