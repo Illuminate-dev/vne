@@ -4,6 +4,14 @@
 Engine::Engine() {
   title = "Visual Novel Engine";
 
+  sf::Image bg_image;
+  if (!bg_image.loadFromFile("res/background.jpg")) {
+    std::cerr << "Error loading background texture" << std::endl;
+    std::exit(1);
+  }
+
+  background.setTexture(bg_image);
+
   sf::Image image;
   if (!image.loadFromFile("res/astolfo.png")) {
     std::cerr << "Error loading character texture" << std::endl;

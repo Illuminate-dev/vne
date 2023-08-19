@@ -2,11 +2,10 @@
 
 #include <iostream>
 
-Background::Background() {
-  if (!backgroundTexture.loadFromFile("res/background.jpg")) {
-    std::cerr << "Error loading background texture" << std::endl;
-    std::exit(1);
-  };
+Background::Background() {}
+
+Background::Background(sf::Image image) {
+  backgroundTexture.loadFromImage(image);
   backgroundSprite.setTexture(backgroundTexture);
 }
 

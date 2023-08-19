@@ -6,6 +6,7 @@
 class Background {
 public:
   Background();
+  Background(sf::Image image);
   void render(sf::RenderWindow &window);
   void setTexture(sf::Image image);
 
