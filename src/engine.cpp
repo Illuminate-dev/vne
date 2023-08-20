@@ -21,6 +21,8 @@ Engine::Engine() {
   characters.push_back(new Character);
   characters.back()->setName("Astolfo");
   characters.back()->setTexture(image);
+
+  text.setText("Hello, world!");
 }
 
 void Engine::setTitle(std::string title) { this->title = title; }
@@ -66,5 +68,8 @@ void Engine::render() {
   background.render(window);
   for (auto &character : characters)
     character->render(window);
+  text.render(window);
+  sf::RectangleShape rect(sf::Vector2f(100, 100));
+  rect.setFillColor(sf::Color::Red);
   window.display();
 }
