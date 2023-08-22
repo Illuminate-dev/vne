@@ -1,4 +1,5 @@
 #include "engine.hpp"
+#include "background.hpp"
 #include <iostream>
 
 Engine::Engine() {
@@ -10,19 +11,21 @@ Engine::Engine() {
     std::exit(1);
   }
 
-  background.setTexture(bg_image);
-
-  sf::Image image;
-  if (!image.loadFromFile("res/astolfo.png")) {
+  scene.setBackground(bg_image);
+  //
+  sf::Image c_image;
+  if (!c_image.loadFromFile("res/astolfo.png")) {
     std::cerr << "Error loading character texture" << std::endl;
     std::exit(1);
   }
 
+  std::vector<Character *> &characters = scene.getCharacters();
+
   characters.push_back(new Character);
   characters.back()->setName("Astolfo");
-  characters.back()->setTexture(image);
+  characters.back()->setTexture(c_image);
 
-  text.setText("Hello, world!");
+  scene.setText("Hello, world!");
 }
 
 void Engine::setTitle(std::string title) { this->title = title; }
@@ -65,11 +68,6 @@ void Engine::update() {}
 
 void Engine::render() {
   window.clear();
-  background.render(window);
-  for (auto &character : characters)
-    character->render(window);
-  text.render(window);
-  sf::RectangleShape rect(sf::Vector2f(100, 100));
-  rect.setFillColor(sf::Color::Red);
+  scene.render(window);
   window.display();
 }
